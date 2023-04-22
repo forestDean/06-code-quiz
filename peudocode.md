@@ -30,11 +30,12 @@
     * stop clock on last answer
 
 * at end of quiz <mark>OR</mark> if timeout
-* display `final score`
+* display `all done` and`final score`
 * render signature input form
 * `Submit`...
     * store signature
     * go to highscores.html
+* `Highscores`...
     * render `High Scores` - highest first
     * render `Go Back` replay button
     * render `Clear Scores` button
