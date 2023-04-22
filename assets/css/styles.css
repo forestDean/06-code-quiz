@@ -1,6 +1,8 @@
 body {
   font-family: Arial;
   font-size: 120%;
+  color: darkolivegreen;
+  background-color: rgba(85, 107, 47, 0.1);
 }
 
 * {
@@ -94,9 +96,13 @@ li:nth-child(odd) {
   font-style: italic;
   font-size: 120%;
   margin-top: 20px;
-  padding-top: 10px;
-  color: gray;
-  border-top: 2px solid #ccc;
+  padding: 12px 20px;
+  color:white;
+  width: 100%;
+  height:50px;
+  margin: 5px 5px 5px 0;
+  border-radius: 5px;
+  /* background-color: rgb(114, 177, 248); */
 }
 
 .timer {
