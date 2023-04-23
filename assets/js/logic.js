@@ -11,10 +11,8 @@ var endScreen = document.querySelector("#end-screen");
 var submitButton = document.querySelector("#submit");
 var feedback = document.querySelector("#feedback");
 
-var bt1 = document.createElement("button");
-var bt2 = document.createElement("button");
-var bt3 = document.createElement("button");
-var bt4 = document.createElement("button");
+var quNo;
+var quCounter;
 
 var timeLeft = 60;
 function setTime() {
@@ -23,109 +21,107 @@ var countDown = setInterval(function () {
     timeLeft--;
     timer.textContent = timeLeft;
     if (timeLeft <= 0){
-      clearInterval(countDown);
-      gameOver();
+        timer.textContent = 0;
+        clearInterval(countDown);
+        gameOver();
     }
   }, 1000);
 };
 
 //var quNo = 0;
-function quizRoll(quNo) {
+function quizRoll(quNo,quCounter) {
+    quCounter++;
+    console.log('quCounter : ' +quCounter);
     // reset feedback
     feedback.setAttribute("style", "display: none");
     // div class="start-screen" hide
     startScreen.setAttribute("style", "display: none;");
     // div id="questions" show
+    //questionsBox.setAttribute("style", "display: none;")
     questionsBox.setAttribute("style", "display: inline;");
+    //clear previous answer buttons
+    while (questionsCh.hasChildNodes()) {
+        questionsCh.removeChild(questionsCh.firstChild);
+      }
+        console.log('quNo: ' + quNo);
     questionsQu.textContent = quiz[quNo].question;
     //feedback.setAttribute("style", "display: inline-block;");
         console.log('question: ' + questionsQu.textContent);
         console.log('quiz.length: ' + quiz.length);
-        console.log('answers: ' + quiz[0].choice);
-    //console.log('answers: ' + quiz[1].choice);
-    //var answers = [quiz[0].choice];
-    //typeof(answers);
-    // var answer = answers[0][0];
-    // console.log('answer: ' + answer);
-    //var answer2 = answers[0][0];
-    console.log('answer2: ' + quiz[0].choice[0]);
-    console.log('answer3: ' + quiz[0].choice[1]);
-    console.log(quNo);
+        console.log('answers: ' + quiz[quNo].choice);
+        console.log('answer : ' + quiz[quNo].answer);
+
 
     // create 4 buttons with answer 
     // add with loop
-   // for (i=1; i <= 4; i++) {
-        var i = 1;
-        var btX = ('bt' + i);
-        console.log(btX);
-        questionsCh.appendChild(btX);
-        // questionsCh.appendChild(bt2);
-        // questionsCh.appendChild(bt3);
-        // questionsCh.appendChild(bt4);
-        btX.setAttribute("class", "select");
-        // select from choice array
-        btX.setAttribute("data-value", quiz[quNo].choice[i]);
-        // bt2.setAttribute("class", "select");
-        // bt2.setAttribute("data-value", "Welsh Rarebit");
-        
-        // add with loop
-        btX.textContent =  i + ". " + quiz[quNo].choice[i];
-        // bt2.textContent =  "2. Welsh Rarebit";
-        // bt3.textContent =  "3. Kedgeree";
-        // bt4.textContent =  "4. Banana and Custard";
+    for (var i=0; i <= 3; i++) {
+        //var i = 0;
+        //var answerButton = ('bt' + i);
+        // console.log(answerButton);
 
-        btX.addEventListener('click', function() {
-        var check = btX.getAttribute("data-value");
-        if (quiz[i].answer === check) {
-            correct();
-            //console.log('correct bt1');
-        } else {
-            //feedback.setAttribute.backgroundColor ="red";
-            wrong();
+        var answerButton = document.createElement("button");
+        questionsCh.appendChild(answerButton);
+        answerButton.setAttribute("class", "select");
+        // select from choice array
+        answerButton.setAttribute("data-value", quiz[quNo].choice[i]);
+        answerButton.textContent =  i+1 + ". " + quiz[quNo].choice[i];
+
+        answerButton.addEventListener('click', function() {
+        var check = this.getAttribute("data-value");
+        if (quiz[quNo].answer === check) {
+            correct(quNo,quCounter);
+            console.log('correct answerButton');
+        } else { 
             timeLeft -= 10;
+            //console.log('quNo Wrong0: ' + quNo);
+            wrong(quNo,quCounter);
+            
         }
         });
-   // }
-    // bt2.addEventListener('click', function() {
-    //     var check = bt2.getAttribute("data-value");
-    //     if (quiz[0].answer === check) {
-    //         correct();
-    //         //console.log('correct');
-    //     } else {
-    //         feedback.setAttribute.backgroundColor ="red";
-    //         wrong();
-    //         timeLeft -= 10;
-    //     }
-    //     });
+    }
 };
 
 startButton.addEventListener("click", function() {
-    console.log('start');
+    //console.log('start');
     setTime();
-    quizRoll(0);
+    quCounter = 0;
+    quizRoll(0,0);
     // serve first question with 4 answers as buttons (random selection?)
     // store position on quiz array
 });
 
-function correct(){
+function correct(quNo,quCounter){
     feedback.textContent = "Correct!";
     feedback.setAttribute("style", "display: inline-block; background-color: rgb(114, 177, 248);");
+    // pop question from quiz
     //log score
+
+    if (quCounter <5){
+    quCounter++;
     //advance question
     quNo++;
-    console.log('quNo: ' + quNo);
-    setTimeout(quizRoll, 2000);
-    //feedback.removeChild();
-    //feedback.setAttribute("style", "display: none");
+    //console.log('quNo: ' + quNo);
+    setTimeout(quizRoll, 1000, quNo); 
+    };
+    //console.log('endGame');
+    // endGame();
 }
 
-function wrong(){
+function wrong(quNo,quCounter){;
    feedback.textContent = "Wrong!";
    feedback.setAttribute("style", "display: inline-block; background-color: rgb(248, 114, 114);");
    // set state to false 
-   //advance question
-   quNo++;
-   setTimeout(quizRoll, 2000);  
+   quiz[quNo].state = false;
+
+   if (quCounter <5){
+    quCounter++;
+    //advance question
+    quNo++;
+    //console.log('quNo: ' + quNo);
+    setTimeout(quizRoll, 1000, quNo); 
+    };
+    //console.log('endGame');
+    // endGame(); 
 }
 
 function gameOver(){

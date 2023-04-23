@@ -17,8 +17,22 @@ var quiz = [
     {
         id: 3,
         question: 'Where is London?',
-        choice: ['Arizona', 'California', 'Nevada', 'Oregon'],
-        answer: 'California',
+        choice: ['Scotland', 'Wales', 'Ireland', 'England'],
+        answer: 'England',
+        state: true
+    },
+    {
+        id: 4,
+        question: 'Where is the Empire State Building?',
+        choice: ['London', 'New York', 'Paris', 'Rome'],
+        answer: 'New York',
+        state: true
+    },
+    {
+        id: 5,
+        question: 'Which plant is closet to the Sun?',
+        choice: ['Mars', 'Earth', 'Venus', 'Mercury'],
+        answer: 'Mercury',
         state: true
     }
 ];
