@@ -17,8 +17,8 @@ var quiz = [
     {
         id: 3,
         question: 'Where is London?',
-        choice: ['Arizona', 'California', 'Nevada', 'Oregon'],
-        answer: 'California',
+        choice: ['Scotland', 'Wales', 'Ireland', 'England'],
+        answer: 'England',
         state: true
     }
 ];
