@@ -12,6 +12,7 @@ var submitButton = document.querySelector("#submit");
 var feedback = document.querySelector("#feedback");
 
 var quNo;
+var quCounter;
 
 var timeLeft = 60;
 function setTime() {
@@ -28,7 +29,9 @@ var countDown = setInterval(function () {
 };
 
 //var quNo = 0;
-function quizRoll(quNo) {
+function quizRoll(quNo,quCounter) {
+    quCounter++;
+    console.log('quCounter : ' +quCounter);
     // reset feedback
     feedback.setAttribute("style", "display: none");
     // div class="start-screen" hide
@@ -66,12 +69,12 @@ function quizRoll(quNo) {
         answerButton.addEventListener('click', function() {
         var check = this.getAttribute("data-value");
         if (quiz[quNo].answer === check) {
-            correct(quNo);
+            correct(quNo,quCounter);
             console.log('correct answerButton');
         } else { 
             timeLeft -= 10;
             //console.log('quNo Wrong0: ' + quNo);
-            wrong(quNo);
+            wrong(quNo,quCounter);
             
         }
         });
@@ -81,31 +84,44 @@ function quizRoll(quNo) {
 startButton.addEventListener("click", function() {
     //console.log('start');
     setTime();
-    quizRoll(0);
+    quCounter = 0;
+    quizRoll(0,0);
     // serve first question with 4 answers as buttons (random selection?)
     // store position on quiz array
 });
 
-function correct(quNo){
+function correct(quNo,quCounter){
     feedback.textContent = "Correct!";
     feedback.setAttribute("style", "display: inline-block; background-color: rgb(114, 177, 248);");
     // pop question from quiz
     //log score
 
+    if (quCounter <5){
+    quCounter++;
     //advance question
     quNo++;
-    console.log('quNo: ' + quNo);
+    //console.log('quNo: ' + quNo);
     setTimeout(quizRoll, 1000, quNo); 
+    };
+    //console.log('endGame');
+    // endGame();
 }
 
-function wrong(quNo){;
+function wrong(quNo,quCounter){;
    feedback.textContent = "Wrong!";
    feedback.setAttribute("style", "display: inline-block; background-color: rgb(248, 114, 114);");
    // set state to false 
    quiz[quNo].state = false;
-   //advance question
-   quNo++;
-   setTimeout(quizRoll, 1000, quNo);  
+
+   if (quCounter <5){
+    quCounter++;
+    //advance question
+    quNo++;
+    //console.log('quNo: ' + quNo);
+    setTimeout(quizRoll, 1000, quNo); 
+    };
+    //console.log('endGame');
+    // endGame(); 
 }
 
 function gameOver(){
