@@ -144,22 +144,37 @@ function wrong(quNo,quCounter){;
 }
 
 function gameOver(score){   
-
-
-    clearContent(questionsQu);
-    clearContent(questionsCh);
-    questionsQu.textContent = "Your Final Score is: " + score;
-    // your final score is...
-    // enter initials/userName: + input + submit button
-
     // reset timer
     timer.textContent = 0;  
-    clearInterval(countDown); // not defined
+    clearInterval(countDown);
+    // reset questions
+    clearContent(questionsQu);
+    clearContent(questionsCh);
+    quCounter = 0;
+    // render score
+    questionsQu.textContent = "Your Final Score is: " + score;
+    // enter initials/userName: + input + submit button
+    // render Form
+    var userSubmit = document.createElement("form");
+        questionsCh.appendChild(userSubmit);
+    var userLabel = document.createElement("label");
+        userSubmit.appendChild(userLabel );
+        userSubmit.textContent = "Enter Username: ";
+    var userInput = document.createElement("input");
+        userSubmit.appendChild(userInput);
+        userInput.setAttribute("type", "text");
+        userInput.setAttribute("id", "username");
+    var userInput = document.createElement("input");
+        userSubmit.appendChild(userInput);
+        userInput.setAttribute("type", "submit");
+        userInput.setAttribute("value", "Submit");
+    // save timer score 
+
 
     feedback.textContent = "GAME OVER!";
     feedback.setAttribute("style", "display: inline-block; background-color: rgb(248, 114, 114);");
-    // save timer score  
-    // reset quCounter   
+ 
+  
 }
 
 function clearContent(element){
