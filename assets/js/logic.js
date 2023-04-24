@@ -151,28 +151,22 @@ function gameOver(score){
     clearContent(questionsQu);
     clearContent(questionsCh);
     quCounter = 0;
-    // render score
-    questionsQu.textContent = "Your Final Score is: " + score;
-    // enter initials/userName: + input + submit button
-    // render Form
-    var userSubmit = document.createElement("form");
-        questionsCh.appendChild(userSubmit);
-    var userLabel = document.createElement("label");
-        userSubmit.appendChild(userLabel );
-        userSubmit.textContent = "Enter Username: ";
-    var userInput = document.createElement("input");
-        userSubmit.appendChild(userInput);
-        userInput.setAttribute("type", "text");
-        userInput.setAttribute("id", "username");
-    var userInput = document.createElement("input");
-        userSubmit.appendChild(userInput);
-        userInput.setAttribute("type", "submit");
-        userInput.setAttribute("value", "Submit");
+    // render EndScreen
+    questionsBox.setAttribute("style", "display: none;");
+    feedback.setAttribute("style", "display: none;");
+    endScreen.setAttribute("style", "display: inline;");
+    gameOverAlert = document.getElementById("gameover");
+    gameOverAlert.textContent = "GAME OVER!";
+    myScore = document.getElementById("final-score");
+    myScore.textContent = score;
+
+
     // save timer score 
 
+    //addeventListener to Submit
+    submitButton.addEventListener("click", addScore);
 
-    feedback.textContent = "GAME OVER!";
-    feedback.setAttribute("style", "display: inline-block; background-color: rgb(248, 114, 114);");
+    
  
   
 }
@@ -181,4 +175,13 @@ function clearContent(element){
 while (element.hasChildNodes()) {
     element.removeChild(element.firstChild);
   }
+}
+
+function addScore(event){
+    // add initial
+    // add score
+    // var count = localStorage.getItem("count");
+    // localStorage.setItem("count", count);
+    // go to highscores.html
+    event.preventDefault(); 
 }
