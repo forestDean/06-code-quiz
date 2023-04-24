@@ -131,8 +131,16 @@ function wrong(quNo,quCounter){;
 }
 
 function gameOver(){
-   feedback.textContent = "GAME OVER!";
-   feedback.setAttribute("style", "display: inline-block; background-color: rgb(248, 114, 114);");
-   
-    
+    clearContent(questionsQu);
+    clearContent(questionsCh);
+    feedback.textContent = "GAME OVER!";
+    feedback.setAttribute("style", "display: inline-block; background-color: rgb(248, 114, 114);");
+    // save timer score  
+    // reset quCounter   
+}
+
+function clearContent(element){
+while (element.hasChildNodes()) {
+    element.removeChild(element.firstChild);
+  }
 }
