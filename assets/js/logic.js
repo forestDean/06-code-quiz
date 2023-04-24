@@ -93,15 +93,15 @@ startButton.addEventListener("click", function() {
 function correct(quNo,quCounter){
     feedback.textContent = "Correct!";
     feedback.setAttribute("style", "display: inline-block; background-color: rgb(114, 177, 248);");
-    // pop question from quiz
+    // pop question from quiz   `
     //log score
 
     if (quCounter <5){
-    quCounter++;
+    //quCounter++;
     //advance question
     quNo++;
     //console.log('quNo: ' + quNo);
-    setTimeout(quizRoll, 1000, quNo); 
+    setTimeout(quizRoll, 1000, quNo, quCounter); 
     };
     //console.log('endGame');
     // endGame();
@@ -114,11 +114,11 @@ function wrong(quNo,quCounter){;
    quiz[quNo].state = false;
 
    if (quCounter <5){
-    quCounter++;
+    //quCounter++;
     //advance question
     quNo++;
     //console.log('quNo: ' + quNo);
-    setTimeout(quizRoll, 1000, quNo); 
+    setTimeout(quizRoll, 1000, quNo, quCounter); 
     };
     //console.log('endGame');
     // endGame(); 

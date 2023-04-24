@@ -11,7 +11,7 @@
 ## PseudoCode
 
 * questions as object arrays
-    * 5 questions with 4 multiple-choice answers
+    * 5 questions with 4 multiple-choice answers per game
 * 60 second countdown timer
 * `Start Quiz` on click...
     * start countdown timer
