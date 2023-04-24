@@ -30,7 +30,7 @@ var quiz = [
     },
     {
         id: 5,
-        question: 'Which plant is closet to the Sun?',
+        question: 'Which planet is closet to the Sun?',
         choice: ['Mars', 'Earth', 'Venus', 'Mercury'],
         answer: 'Mercury',
         state: true

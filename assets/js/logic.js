@@ -13,6 +13,8 @@ var feedback = document.querySelector("#feedback");
 
 var quNo;
 var quCounter;
+var correctSound = new Audio('./assets/sfx/correct.wav');
+var incorrectSound = new Audio('./assets/sfx/incorrect.wav');
 
 var timeLeft = 60;
 function setTime() {
@@ -93,6 +95,8 @@ startButton.addEventListener("click", function() {
 function correct(quNo,quCounter){
     feedback.textContent = "Correct!";
     feedback.setAttribute("style", "display: inline-block; background-color: rgb(114, 177, 248);");
+    // play sound
+    correctSound.play();
     // pop question from quiz   `
     //log score
 
@@ -110,6 +114,8 @@ function correct(quNo,quCounter){
 function wrong(quNo,quCounter){;
    feedback.textContent = "Wrong!";
    feedback.setAttribute("style", "display: inline-block; background-color: rgb(248, 114, 114);");
+   // play sound
+   incorrectSound.play();
    // set state to false 
    quiz[quNo].state = false;
 
