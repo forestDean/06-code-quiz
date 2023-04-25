@@ -19,6 +19,9 @@ var incorrectSound = new Audio('./assets/sfx/incorrect.wav');
 var timeLeft = 60;
 var score;
 var countDown;
+//localStorage.setItem("hScores","");
+var highScoreArray;
+
 
 function setTime() {
 //var timeLeft = 60;
@@ -180,8 +183,18 @@ function addScore(event){
     var stringScore = JSON.stringify(score);
     var yourScore =  userName  + ' - ' + stringScore;
     console.log(yourScore);
-    // append to highScoreArray
 
+    //var highScoreArray = JSON.parse(localStorage.getItem("hScores"));
+    //var highScoreArray = JSON.parse(localStorage.getItem("hScores"));
+    var highScoreArray = JSON.parse(localStorage.getItem("hScores"));
+    // append to highScoreArray
+    console.log('highScoreArray : ' + highScoreArray);
+    highScoreArray.unshift(yourScore);
+    console.log(highScoreArray);
+
+    localStorage.setItem("hScores",JSON.stringify(highScoreArray));
+    // array = localStorage.getItem("hScores");
+    // console.log('localStorage : ' + array);
 
 
 
