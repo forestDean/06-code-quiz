@@ -95,7 +95,7 @@ var quiz = [
         id: 14,
         question: 'Which is the strict equality operator?',
         choice: ['=', '==', '!=', '==='],
-        answer: 'New York',
+        answer: '===',
         state: true
     },
     {

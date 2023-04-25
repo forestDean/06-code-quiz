@@ -1,4 +1,3 @@
-//var startScreenElement = document.querySelector("#scores");
 var timer = document.querySelector("#time");
 var startScreen = document.querySelector("#start-screen");
 var startButton = document.querySelector("#start");
@@ -24,7 +23,6 @@ var countDown;
 
 
 function setTime() {
-//var timeLeft = 60;
     countDown = setInterval(function () {
     timeLeft--;
     timer.textContent = timeLeft;
@@ -34,7 +32,7 @@ function setTime() {
         clearInterval(countDown);
         gameOver(score);
     }
-    return timeLeft; //is this needed
+    return timeLeft; 
   }, 1000);
 };
 
@@ -42,21 +40,13 @@ function quizRoll(quNo,quCounter) {
     quCounter++;
     // set 5 questions per quiz
     if (quCounter <= 5) { 
-        //console.log('quCounter : ' +quCounter);
         // reset
         feedback.setAttribute("style", "display: none");
         startScreen.setAttribute("style", "display: none;");
         questionsBox.setAttribute("style", "display: inline;");
         //clear previous answer buttons
         clearContent(questionsCh);
-            //console.log('quNo: ' + quNo);
         questionsQu.textContent = quiz[quNo].question;
-
-            // console.log('question: ' + questionsQu.textContent);
-            // console.log('quiz.length: ' + quiz.length);
-            // console.log('answers: ' + quiz[quNo].choice);
-            // console.log('answer : ' + quiz[quNo].answer);
-
 
         // create 4 buttons with answer 
         for (var i=0; i <= 3; i++) {
@@ -71,7 +61,6 @@ function quizRoll(quNo,quCounter) {
             var check = this.getAttribute("data-value");
             if (quiz[quNo].answer === check) {
                 correct(quNo,quCounter);
-                //console.log('correct answerButton');
             } else { 
                 timeLeft -= 10;
                 wrong(quNo,quCounter);
@@ -82,13 +71,10 @@ function quizRoll(quNo,quCounter) {
     } else {
         score = timeLeft;
         gameOver(score);
-        // console.log('timeLeft: ' + timeLeft);
-        // console.log('final score0 : ' + score);
     }
 };
 
 startButton.addEventListener("click", function() {
-    //console.log('start');
     if (quNo >= 15) {
         quNo = 0;
     };
@@ -102,18 +88,13 @@ function correct(quNo,quCounter){
     feedback.setAttribute("style", "display: inline-block; background-color: rgb(114, 177, 248);");
     // play sound
     correctSound.play();
-    // pop question from quiz   `
-    //log score
 
     if (quCounter <= 5){
     //quCounter++;
     //advance question
     quNo++;
-    //console.log('quNo: ' + quNo);
     setTimeout(quizRoll, 1000, quNo, quCounter); 
     };
-    //console.log('endGame');
-    // endGame();
 }
 
 function wrong(quNo,quCounter){;
@@ -125,14 +106,10 @@ function wrong(quNo,quCounter){;
    quiz[quNo].state = false;
 
    if (quCounter <= 5){
-    //quCounter++;
     //advance question
     quNo++;
-    //console.log('quNo: ' + quNo);
     setTimeout(quizRoll, 1000, quNo, quCounter); 
     };
-    //console.log('endGame');
-    // endGame(); 
 }
 
 function gameOver(score){   
@@ -153,7 +130,6 @@ function gameOver(score){
     myScore.textContent = score;
 
     // save timer score 
-    //console.log('final score1 : ' + score);
     return score;
   
 }
@@ -165,7 +141,6 @@ while (element.hasChildNodes()) {
 }
 
 var highScoreArray;
-//var highScoreArray = [];
 function addScore(event){
     event.preventDefault(); 
     // add initial
