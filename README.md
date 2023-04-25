@@ -5,7 +5,7 @@ A timed quiz on JavaScript fundamentals.
 	
 JavaScript code has been used to create an interactive multiple-choice Quiz.     
 The player must compete against the clock to get the fastest time with the fewest errors.   
-A wrong answer will cost them 10seconds...!   
+A wrong answer will cost them 10 seconds...!   
 
 ![codequiz](./images/codeQuiz.gif)
 
