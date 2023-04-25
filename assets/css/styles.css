@@ -49,9 +49,6 @@ button:hover {
   overflow: hidden;
 }
 
-#questions {
-}
-
 #question-title {
   min-height: 100px;
 }
@@ -104,7 +101,6 @@ li:nth-child(odd) {
   height:50px;
   margin: 5px 5px 5px 0;
   border-radius: 5px;
-  /* background-color: rgb(114, 177, 248); */
 }
 
 .timer {
@@ -117,13 +113,6 @@ li:nth-child(odd) {
   margin: 20px 0 0;
 }
 
-/* .gameover {
-  display: inline-block; 
-  background-color: rgb(248, 114, 114);
-  margin-top: 20px;
-} */
-
-
 /* RESPONSIVE MEDIA QUERIES */
 
  /* Extra large devices (large desktops, 1200px and up) */
@@ -133,17 +122,25 @@ li:nth-child(odd) {
  
  /* Large devices (desktops, 992px and up) */
  @media (max-width: 992px) {
-
  }
 
  /* Medium devices (tablets, 768px and up) */
  @media (max-width: 768px) { 
-
  }
- 
+
  /* Small devices (landscape phones, 576px and up) */
  @media (max-width: 576px) {
+  .wrapperscore {
+    margin: 30px auto 0 auto;
+  }
 
+  .select {
+    height:80px;
+    font-size: 120%;
+  }
+
+  #submit {
+    margin: 80px 0 0;
+  }
  }
 
-  /* Extra small devices (portrait phones, less than 576px)

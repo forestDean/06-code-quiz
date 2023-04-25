@@ -38,39 +38,28 @@ function setTime() {
   }, 1000);
 };
 
-//var quNo = 0;
 function quizRoll(quNo,quCounter) {
     quCounter++;
-    if (quCounter <= 5) {
-        console.log('quCounter : ' +quCounter);
-        // reset feedback
+    // set 5 questions per quiz
+    if (quCounter <= 5) { 
+        //console.log('quCounter : ' +quCounter);
+        // reset
         feedback.setAttribute("style", "display: none");
-        // div class="start-screen" hide
         startScreen.setAttribute("style", "display: none;");
-        // div id="questions" show
-        //questionsBox.setAttribute("style", "display: none;")
         questionsBox.setAttribute("style", "display: inline;");
         //clear previous answer buttons
         clearContent(questionsCh);
-        // while (questionsCh.hasChildNodes()) {
-        //     questionsCh.removeChild(questionsCh.firstChild);
-        //   }
-            console.log('quNo: ' + quNo);
+            //console.log('quNo: ' + quNo);
         questionsQu.textContent = quiz[quNo].question;
-        //feedback.setAttribute("style", "display: inline-block;");
-            console.log('question: ' + questionsQu.textContent);
-            console.log('quiz.length: ' + quiz.length);
-            console.log('answers: ' + quiz[quNo].choice);
-            console.log('answer : ' + quiz[quNo].answer);
+
+            // console.log('question: ' + questionsQu.textContent);
+            // console.log('quiz.length: ' + quiz.length);
+            // console.log('answers: ' + quiz[quNo].choice);
+            // console.log('answer : ' + quiz[quNo].answer);
 
 
         // create 4 buttons with answer 
-        // add with loop
         for (var i=0; i <= 3; i++) {
-            //var i = 0;
-            //var answerButton = ('bt' + i);
-            // console.log(answerButton);
-
             var answerButton = document.createElement("button");
             questionsCh.appendChild(answerButton);
             answerButton.setAttribute("class", "select");
@@ -82,10 +71,9 @@ function quizRoll(quNo,quCounter) {
             var check = this.getAttribute("data-value");
             if (quiz[quNo].answer === check) {
                 correct(quNo,quCounter);
-                console.log('correct answerButton');
+                //console.log('correct answerButton');
             } else { 
                 timeLeft -= 10;
-                //console.log('quNo Wrong0: ' + quNo);
                 wrong(quNo,quCounter);
                 
             }
@@ -94,18 +82,19 @@ function quizRoll(quNo,quCounter) {
     } else {
         score = timeLeft;
         gameOver(score);
-        console.log('timeLeft: ' + timeLeft);
-        console.log('final score0 : ' + score);
+        // console.log('timeLeft: ' + timeLeft);
+        // console.log('final score0 : ' + score);
     }
 };
 
 startButton.addEventListener("click", function() {
     //console.log('start');
+    if (quNo >= 20) {
+        quNo = 0;
+    };
     setTime();
     quCounter = 0;
     quizRoll(0,0);
-    // serve first question with 4 answers as buttons (random selection?)
-    // store position on quiz array
 });
 
 function correct(quNo,quCounter){
@@ -164,7 +153,7 @@ function gameOver(score){
     myScore.textContent = score;
 
     // save timer score 
-    console.log('final score1 : ' + score);
+    //console.log('final score1 : ' + score);
     return score;
   
 }
@@ -179,14 +168,12 @@ var highScoreArray;
 //var highScoreArray = [];
 function addScore(event){
     event.preventDefault(); 
-    // what is 'event'?
     // add initial
     var userName = document.getElementById('initials').value;
     userName = userName.toUpperCase();
     var stringScore = JSON.stringify(score);
     var yourScore =  userName  + ' - ' + stringScore;
     console.log(yourScore);
-
 
     var highScoreArray = JSON.parse(localStorage.getItem("hScores"));
     if (highScoreArray == null) {
