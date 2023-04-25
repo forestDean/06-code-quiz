@@ -17,7 +17,7 @@ var correctSound = new Audio('./assets/sfx/correct.wav');
 var incorrectSound = new Audio('./assets/sfx/incorrect.wav');
 
 var timeLeft = 60;
-var score = timeLeft;
+var score;
 var countDown;
 
 function setTime() {
@@ -92,7 +92,7 @@ function quizRoll(quNo,quCounter) {
         score = timeLeft;
         gameOver(score);
         console.log('timeLeft: ' + timeLeft);
-        console.log('final score : ' + score);
+        console.log('final score0 : ' + score);
     }
 };
 
@@ -160,14 +160,9 @@ function gameOver(score){
     myScore = document.getElementById("final-score");
     myScore.textContent = score;
 
-
     // save timer score 
-
-    //addeventListener to Submit
-    submitButton.addEventListener("click", addScore);
-
-    
- 
+    console.log('final score1 : ' + score);
+    return score;
   
 }
 
@@ -178,10 +173,30 @@ while (element.hasChildNodes()) {
 }
 
 function addScore(event){
-    // add initial
-    // add score
-    // var count = localStorage.getItem("count");
-    // localStorage.setItem("count", count);
-    // go to highscores.html
     event.preventDefault(); 
+    // what is 'event'?
+    // add initial
+    var userName = document.getElementById('initials').value;
+    var stringScore = JSON.stringify(score);
+    var yourScore =  userName  + ' - ' + stringScore;
+    console.log(yourScore);
+    // append to highScoreArray
+
+
+
+
+    // // add score
+    // // var yourScore = JSON.parse(localStorage.getItem("yourScore"));
+    // // localStorage.setItem("yourScore", JSON.stringify(score));
+
+    // console.log('Submit');
+    // console.log('Username : ' + userName + ' - ' + score);
+    // //console.log('final score2 : ' + yourScore);
+    // console.log('final score2 : ' + score);
+    // go to highscores.html
+    // window.location.href = "highscores.html";
+
 }
+
+    //addeventListener to Submit
+    submitButton.addEventListener("click", addScore)
