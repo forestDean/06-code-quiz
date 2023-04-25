@@ -89,7 +89,7 @@ function quizRoll(quNo,quCounter) {
 
 startButton.addEventListener("click", function() {
     //console.log('start');
-    if (quNo >= 20) {
+    if (quNo >= 15) {
         quNo = 0;
     };
     setTime();
