@@ -47,6 +47,9 @@ var li4 = document.createElement("li");
     //addeventListener to Clear Button
     clearButton.addEventListener("click", function(){
         // save empty highScoreArray 
-        console.log('CLEARED');
+        while (highScores.hasChildNodes()) {
+            highScores.removeChild(highScores.firstChild);
+          }
+        //console.log('CLEARED');
         localStorage.clear();
     });

@@ -46,7 +46,6 @@ button:hover {
 .choices button {
   display: inline-block;
   text-align: left;
-  /* margin-left: 0; */
   overflow: hidden;
 }
 
@@ -54,7 +53,6 @@ button:hover {
 }
 
 #question-title {
-  border: 1px solid red;
   min-height: 100px;
 }
 
@@ -125,3 +123,27 @@ li:nth-child(odd) {
   margin-top: 20px;
 } */
 
+
+/* RESPONSIVE MEDIA QUERIES */
+
+ /* Extra large devices (large desktops, 1200px and up) */
+ @media (max-width: 1200px) { 
+  /* :root {--cardHeight: 300px;} */
+ }
+ 
+ /* Large devices (desktops, 992px and up) */
+ @media (max-width: 992px) {
+
+ }
+
+ /* Medium devices (tablets, 768px and up) */
+ @media (max-width: 768px) { 
+
+ }
+ 
+ /* Small devices (landscape phones, 576px and up) */
+ @media (max-width: 576px) {
+
+ }
+
+  /* Extra small devices (portrait phones, less than 576px)

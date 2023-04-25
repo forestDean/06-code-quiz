@@ -19,8 +19,8 @@ var incorrectSound = new Audio('./assets/sfx/incorrect.wav');
 var timeLeft = 60;
 var score;
 var countDown;
-//localStorage.setItem("hScores","");
-var highScoreArray;
+
+
 
 
 function setTime() {
@@ -135,7 +135,7 @@ function wrong(quNo,quCounter){;
    // set state to false 
    quiz[quNo].state = false;
 
-   if (quCounter <5){
+   if (quCounter <= 5){
     //quCounter++;
     //advance question
     quNo++;
@@ -175,41 +175,33 @@ while (element.hasChildNodes()) {
   }
 }
 
+var highScoreArray;
+//var highScoreArray = [];
 function addScore(event){
     event.preventDefault(); 
     // what is 'event'?
     // add initial
     var userName = document.getElementById('initials').value;
+    userName = userName.toUpperCase();
     var stringScore = JSON.stringify(score);
     var yourScore =  userName  + ' - ' + stringScore;
     console.log(yourScore);
 
-    //var highScoreArray = JSON.parse(localStorage.getItem("hScores"));
-    //var highScoreArray = JSON.parse(localStorage.getItem("hScores"));
+
     var highScoreArray = JSON.parse(localStorage.getItem("hScores"));
+    if (highScoreArray == null) {
+        highScoreArray = [];
+    }
     // append to highScoreArray
     console.log('highScoreArray : ' + highScoreArray);
     highScoreArray.unshift(yourScore);
+    highScoreArray = highScoreArray.slice(0, 20); // limit to 20 highscores
     console.log(highScoreArray);
-
     localStorage.setItem("hScores",JSON.stringify(highScoreArray));
-    // array = localStorage.getItem("hScores");
-    // console.log('localStorage : ' + array);
 
-
-
-    // // add score
-    // // var yourScore = JSON.parse(localStorage.getItem("yourScore"));
-    // // localStorage.setItem("yourScore", JSON.stringify(score));
-
-    // console.log('Submit');
-    // console.log('Username : ' + userName + ' - ' + score);
-    // //console.log('final score2 : ' + yourScore);
-    // console.log('final score2 : ' + score);
     // go to highscores.html
-    // window.location.href = "highscores.html";
-
+    window.location.href = "highscores.html";
 }
 
-    //addeventListener to Submit
+    // addeventListener to Submit
     submitButton.addEventListener("click", addScore)
