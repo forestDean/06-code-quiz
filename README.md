@@ -7,11 +7,11 @@ JavaScript code has been used to create an interactive multiple-choice Quiz.
 The player must compete against the clock to get the fastest time with the fewest errors.   
 A wrong answer will cost them 10 seconds...!   
 
-![codequiz](./images/codeQui.gif)
+![codequiz](./images/codeQuiz.gif)
 
 The **Code Quiz** has been optimised for various display sizes using responsive CSS design.  
  
-![highscores](./images/highscore.png)
+![highscores](./images/highscores.png)
 
 	
 ## Installation
