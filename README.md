@@ -37,3 +37,4 @@ How to Store a Javascript Array in localStorage - https://catalins.tech/store-ar
 ## License
 	
 **MIT** - Please refer to the LICENSE in the repository.
+
